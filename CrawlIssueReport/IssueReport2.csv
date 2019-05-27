@@ -1,0 +1,71 @@
+Type,Assignee,Created,Updated,Description,Comments
+Bug,Claus Ibsen,"Wed, 14 Dec 2016 14:42:08 +0000","Thu, 15 Dec 2016 14:26:13 +0000","<p>Assume I have rest path</p>
+
+<div class=""code panel"" style=""border-width: 1px;""><div class=""codeContent panelContent"">
+<pre class=""code-java""><span class=""code-keyword"">rest</span>(<span class=""code-quote"">""/test""</span>).get().type(ClassA.class).to(<span class=""code-quote"">""direct:someRoute""</span>);
+
+<span class=""code-keyword"">rest</span>(<span class=""code-quote"">""/testSub""</span>).get().type(ClassB.class).to(<span class=""code-quote"">""direct:someOtherRoute""</span>);
+</pre>
+</div></div>
+
+<p>And in the type ClassA contains a reference to ClassB.</p>
+
+<p>Within the Swagger Doc the path for ClassA renders as expected:</p>
+<div class=""code panel"" style=""border-width: 1px;""><div class=""codeContent panelContent"">
+<pre class=""code-java"">/test:
+    get:
+      responses:
+        200:
+          schema:
+            $ref: <span class=""code-quote"">'#/definitions/ClassA'</span>
+</pre>
+</div></div>
+
+<p>However ClassB gets a string parameter scheme</p>
+<div class=""code panel"" style=""border-width: 1px;""><div class=""codeContent panelContent"">
+<pre class=""code-java""> 
+/testSub:
+    get:
+      responses:
+        200:
+          schema:
+             type : <span class=""code-quote"">'string'</span>
+             format : <span class=""code-quote"">'com.ClassB'</span>
+</pre>
+</div></div>
+
+<p>However I'd expect it to be:</p>
+<div class=""code panel"" style=""border-width: 1px;""><div class=""codeContent panelContent"">
+<pre class=""code-java"">/testSub:
+    get:
+      responses:
+        200:
+          schema:
+            $ref: <span class=""code-quote"">'#/definitions/ClassB'</span>
+</pre>
+</div></div>","<p>GitHub user bobpaulin opened a pull request:</p>
+
+<p>    <a href=""https://github.com/apache/camel/pull/1348"" class=""external-link"" rel=""nofollow"">https://github.com/apache/camel/pull/1348</a></p>
+
+<p>    <a href=""https://issues.apache.org/jira/browse/CAMEL-10597"" title=""Swagger prints child object types as string parameters rather than refs"" class=""issue-link"" data-issue-key=""CAMEL-10597""><del>CAMEL-10597</del></a> - Allow addition of x-className to empty VendorExtensions</p>
+
+
+
+<p>You can merge this pull request into a Git repository by running:</p>
+
+<p>    $ git pull <a href=""https://github.com/bobpaulin/camel"" class=""external-link"" rel=""nofollow"">https://github.com/bobpaulin/camel</a> <a href=""https://issues.apache.org/jira/browse/CAMEL-10597"" title=""Swagger prints child object types as string parameters rather than refs"" class=""issue-link"" data-issue-key=""CAMEL-10597""><del>CAMEL-10597</del></a></p>
+
+<p>Alternatively you can review and apply these changes as the patch at:</p>
+
+<p>    <a href=""https://github.com/apache/camel/pull/1348.patch"" class=""external-link"" rel=""nofollow"">https://github.com/apache/camel/pull/1348.patch</a></p>
+
+<p>To close this pull request, make a commit to your master/trunk branch<br/>
+with (at least) the following in the commit message:</p>
+
+<p>    This closes #1348</p>
+
+<hr />
+
+<hr />,<p>PR included <a href=""https://github.com/apache/camel/pull/1348"" class=""external-link"" rel=""nofollow"">https://github.com/apache/camel/pull/1348</a></p>,<p>Thanks for the PR</p>,<p>Github user bobpaulin closed the pull request at:</p>
+
+<p>    <a href=""https://github.com/apache/camel/pull/1348"" class=""external-link"" rel=""nofollow"">https://github.com/apache/camel/pull/1348</a></p>,<p>2.17.x is affected too <a href=""https://issues.apache.org/jira/secure/ViewProfile.jspa?name=davsclaus"" class=""user-hover"" rel=""davsclaus"">Claus Ibsen</a></p>,<p>Thanks its backported now</p>"

@@ -4,7 +4,7 @@
 # >>scrapy runspider JiraIssueProperty.py
 #
 # if you want to get out in csv format then type the following command in the terminal 
-# >>scrapy runspider JiraIssueProperty.py -o JiraIssues.csv
+# >>scrapy runspider JiraIssueProperty.py -o IssueReport.csv
 #
 # @author  Kalyani
 # @version 1.0
