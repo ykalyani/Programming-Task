@@ -31,8 +31,7 @@ class JiraIssuesProperties(scrapy.Spider):
             yield {
              'Type' : jira.xpath('//ul/li[@class="item"]/div[@class="wrap"]/span[@id="type-val"]/text()')[1].get(),
              'Assignee': jira.xpath('//ul/li[@class="people-details"]/dl/dd/span/span/text()')[1].get(),
-             'created' : jira.xpath('//ul/li/dl[@class="dates"]/dd/span/time/text()')[1].get(),
-             'Resolved' : jira.xpath('//ul/li/dl[@class="dates"]/dd/span/time/text()')[2].get(),
+             'created' : jira.xpath('//ul/li/dl[@class="dates"]/dd/span/time/@datetime').get(),
              'Description': jira.xpath('//div[@class="user-content-block"]/descendant-or-self::*/text()').getall(),
                
             }
