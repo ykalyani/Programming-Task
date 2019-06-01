@@ -1,8 +1,8 @@
-Type,Assignee,created,Description
+Type,Assignee,Created,Created_Epoch,Description
 " Bug
         ","
             Claus Ibsen
-        ",2016-12-14T14:42:08+0000,"
+        ",2016-12-14T14:42:08+0000,1481706728.0,"
                     ,Assume I have rest path,
 
 ,

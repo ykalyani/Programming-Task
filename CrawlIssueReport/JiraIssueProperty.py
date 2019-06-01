@@ -12,6 +12,7 @@
 
 
 import scrapy
+import datetime
 
 class JiraIssuesProperties(scrapy.Spider):
     name = "jira_issue_report"
@@ -31,8 +32,9 @@ class JiraIssuesProperties(scrapy.Spider):
             yield {
              'Type' : jira.xpath('//ul/li[@class="item"]/div[@class="wrap"]/span[@id="type-val"]/text()')[1].get(),
              'Assignee': jira.xpath('//ul/li[@class="people-details"]/dl/dd/span/span/text()')[1].get(),
-             'created' : jira.xpath('//ul/li/dl[@class="dates"]/dd/span/time/@datetime').get(),
+             'Created' : jira.xpath('//ul/li/dl[@class="dates"]/dd/span/time/@datetime').get(),
+             'Created_Epoch': datetime.datetime.strptime(jira.xpath('//ul/li/dl[@class="dates"]/dd/span/time/@datetime').get(), "%Y-%m-%dT%H:%M:%S+%f").timestamp(),
              'Description': jira.xpath('//div[@class="user-content-block"]/descendant-or-self::*/text()').getall(),
                
             }
-            
+           
